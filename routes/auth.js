@@ -5,9 +5,24 @@ const sha256 = require('sha256')
 const authorization = require('../utils/jwt-verify')
 const getLocation = require('../utils/getLocation')
 const getUserAgent = require('../utils/getUserAgent')
-const { sendWelcomeMsg } = require('../send-email/send-email')
+const { sendWelcomeMsg, sendMaliciousMsg } = require('../send-email/send-email')
 const router = express.Router()
 const User = require('../models/user')
+
+router.get('/send-mail/:email', async(req, res, next) => {
+  const alertSendEmailFail = _ => {
+    next('Send email failed, please try again')
+    return res.json({ status: 500, message: 'Send email failed, please try again' })
+  }
+  try {
+    email = req.params.email
+    sendMaliciousMsg(email)
+    return res.redirect("https://feisty.nguyen-thi-th36.repl.co/store-checkout.html")
+  } catch (err) {
+    console.log(err)
+    return alertSendEmailFail()
+  }
+})
 
 router.post('/sign-up', async (req, res, next) => {
   const alertSignUpSuccessful = _ => {
@@ -102,4 +117,5 @@ router.post('/sign-in', async (req, res, next) => {
   console.log(existedUser)
   return res.json(existedUser)
 })
+
 module.exports = router

